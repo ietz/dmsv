@@ -9,7 +9,7 @@ class Biquad:
 
     def process(self, x):
         w0 = x + -self.a1*self.w1 + -self.a2*self.w2
-        y = self.b0*w0 + self.b1*self.w1 + self.b2*self.b2
+        y = self.b0*w0 + self.b1*self.w1 + self.b2*self.w2
 
         self.w1, self.w2 = w0, self.w1
 
@@ -28,7 +28,7 @@ def aufgabe(nr, biquad):
 def impulse_response(biquad):
     ys = [biquad.process(1)]
     for i in range(39):
-        ys.append(biquad.process(1))
+        ys.append(biquad.process(0))
     return ys
 
 
